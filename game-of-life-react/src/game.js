@@ -96,6 +96,10 @@ class Game extends Component {
 
       return clonedBoardStatus;
     };
+
+    this.setState((prevState) => ({
+      boardStatus: toggleBoardStatus(prevState),
+    }));
   };
 
   render() {
