@@ -60,7 +60,12 @@ const Slider = ({ speed, onSpeedChange }) => {
 };
 
 class Game extends Component {
-  state = {};
+  state = {
+    boardStatus: newBoardStatus(),
+    generation: 0,
+    isGameRunning: false,
+    speed: 500,
+  };
 
   render() {
     return <div></div>;
