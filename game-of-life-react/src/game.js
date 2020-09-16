@@ -86,6 +86,18 @@ class Game extends Component {
     });
   };
 
+  handleToggleCellStatus = (r, c) => {
+    const toggleBoardStatus = (prevState) => {
+      const clonedBoardStatus = JSON.parse(
+        JSON.stringify(prevState.boardStatus)
+      );
+
+      clonedBoardStatus[r][c] = !clonedBoardStatus[r][c];
+
+      return clonedBoardStatus;
+    };
+  };
+
   render() {
     return <div></div>;
   }
