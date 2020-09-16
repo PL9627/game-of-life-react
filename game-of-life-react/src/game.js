@@ -79,6 +79,13 @@ class Game extends Component {
     );
   };
 
+  handleClearBoard = () => {
+    this.setState({
+      boardStatus: newBoardStatus(),
+      generation: 0,
+    });
+  };
+
   render() {
     return <div></div>;
   }
