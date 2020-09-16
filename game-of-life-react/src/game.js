@@ -102,6 +102,57 @@ class Game extends Component {
     }));
   };
 
+  handleStep = () => {
+    const nextStep = (prevState) => {
+      const boardStatus = prevState.boardStatus;
+      const clonedBoardStatus = JSON.parse(JSON.stringify(boardStatus));
+
+      const trueNeighborAmount = (r, c) => {
+        const neighbors = [
+          [-1, -1],
+          [-1, 0],
+          [-1, 1],
+          [0, 1],
+          [1, 1],
+          [1, 0],
+          [1, -1],
+          [0, -1],
+        ];
+
+        return neighbors.reduce((trueNeighbors, neighbor) => {
+          const x = r + neighbor[0];
+          const y = c + neighbor[1];
+          const isNeighborOnBoard =
+            x >= 0 && x < gridRows && y >= 0 && gridCols;
+
+          if (trueNeighbors < 4 && isNeighborOnBoard && boardStatus[x][y]) {
+            return trueNeighbors + 1;
+          } else {
+            return trueNeighbors;
+          }
+        }, 0);
+      };
+
+      for (let r = 0; r < gridRows; r++) {
+        for (let c = 0; c < gridCols; c++) {
+          const totalTrueNeighbors = trueNeighborAmount(r, c);
+
+          if (!boardStatus[r][c]) {
+            if (totalTrueNeighbors === 3) clonedBoardStatus[r][c] = true;
+          } else {
+            if (totalTrueNeighbors < 2 || totalTrueNeighbors > 3)
+              clonedBoardStatus[r][c] = false;
+          }
+        }
+      }
+      return clonedBoardStatus;
+    };
+    this.setState((prevState) => ({
+      boardStatus: nextStep(prevState),
+      generation: prevState.generation + 1,
+    }));
+  };
+
   render() {
     return <div></div>;
   }
