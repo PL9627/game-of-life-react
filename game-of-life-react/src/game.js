@@ -67,6 +67,18 @@ class Game extends Component {
     speed: 500,
   };
 
+  runStopBttn = () => {
+    return this.state.isGameRunning ? (
+      <button type="button" onClick={this.handleStop}>
+        Stop
+      </button>
+    ) : (
+      <button type="button" onClick={this.handleRun}>
+        Start
+      </button>
+    );
+  };
+
   render() {
     return <div></div>;
   }
