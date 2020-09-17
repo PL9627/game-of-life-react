@@ -189,7 +189,41 @@ class Game extends Component {
   }
 
   render() {
-    return <div></div>;
+    const { boardStatus, isGameRunning, generation, speed } = this.state;
+
+    return (
+      <div>
+        <h1>Game of Life</h1>
+        <BoardGrid
+          boardStatus={boardStatus}
+          onToggleCellStatus={this.handleToggleCellStatus}
+        />
+        <div className="flexRow upperControls">
+          <span>
+            {"+ "}
+            <Slider speed={speed} onSpeedChange={this.handleSpeedChange} />
+            {"- "}
+          </span>
+          {`Generation: ${generation}`}
+        </div>
+        <div className="flexRow lowerControls">
+          {this.runStopBttn()}
+          <button
+            type="button"
+            disabled={isGameRunning}
+            onClick={this.handleStep}
+          >
+            Step
+          </button>
+          <button type="button" onClick={this.handleClearBoard}>
+            Clear Board
+          </button>
+          <button type="button" onClick={this.handleNewBoard}>
+            New Board
+          </button>
+        </div>
+      </div>
+    );
   }
 }
 
