@@ -153,6 +153,24 @@ class Game extends Component {
     }));
   };
 
+  handleSpeedChange = (newSpeed) => {
+    this.setState({
+      speed: newSpeed,
+    });
+  };
+
+  handleRun = () => {
+    this.setState({
+      isGameRunning: true,
+    });
+  };
+
+  handleStop = () => {
+    this.setState({
+      isGameRunning: false,
+    });
+  };
+
   render() {
     return <div></div>;
   }
