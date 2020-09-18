@@ -53,6 +53,24 @@ const Grid = (props) => {
   );
 };
 
+class Buttons extends React.Component {
+  handleSelect = (eventKey) => {
+    this.props.gridSize(eventKey);
+  };
+
+  render() {
+    return (
+      <div className="center">
+        <ButtonToolBar>
+          <button className="btn btn-default" onClick={this.props.playButton}>
+            Play
+          </button>
+        </ButtonToolBar>
+      </div>
+    );
+  }
+}
+
 /* const gridRows = 80;
 const gridCols = 200;
 
