@@ -1,16 +1,14 @@
 import React from "react";
 import "./App.css";
 
-import Rules from "./rules";
-import Game from "./game";
+import Rules from "./rules/rules";
+import Game from "./game/game";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Game />
-        <Rules />
-      </header>
+      <Game />
+      <Rules />
     </div>
   );
 }
