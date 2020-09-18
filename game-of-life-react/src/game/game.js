@@ -3,6 +3,10 @@ import ReactDOM from "react-dom";
 import { ButtonToolBar, MenuItem, DropdownButton } from "react-bootstrap";
 import "./game.css";
 
+function arrClone(arr) {
+  return JSON.parse(JSON.stringify(arr));
+}
+
 /* const gridRows = 80;
 const gridCols = 200;
 
