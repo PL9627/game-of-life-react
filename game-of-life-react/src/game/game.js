@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
+import ReactDOM from "react-dom";
+import { ButtonToolBar, MenuItem, DropdownButton } from "react-bootstrap";
 import "./game.css";
 
-const gridRows = 80;
+/* const gridRows = 80;
 const gridCols = 200;
 
 const newBoardStatus = (cellStatus = () => Math.random() < 0.3) => {
@@ -231,6 +233,4 @@ class Game extends Component {
       </div>
     );
   }
-}
-
-export default Game;
+} */
