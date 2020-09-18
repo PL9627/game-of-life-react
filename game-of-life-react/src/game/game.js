@@ -7,6 +7,22 @@ function arrClone(arr) {
   return JSON.parse(JSON.stringify(arr));
 }
 
+class Box extends React.Component {
+  selectBox = () => {
+    this.props.selectBox(this.props.row, this.props.col);
+  };
+
+  render() {
+    return (
+      <div
+        className={this.props.boxClass}
+        id={this.props.id}
+        onClick={this.selectBox}
+      />
+    );
+  }
+}
+
 /* const gridRows = 80;
 const gridCols = 200;
 
