@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./game.css";
 
-const gridRows = 100;
-const gridCols = 300;
+const gridRows = 80;
+const gridCols = 200;
 
 const newBoardStatus = (cellStatus = () => Math.random() < 0.3) => {
   const grid = [];
@@ -198,7 +198,7 @@ class Game extends Component {
     const { boardStatus, isGameRunning, generation, speed } = this.state;
 
     return (
-      <div classname="game">
+      <div className="game">
         <h1>Game of Life</h1>
         <BoardGrid
           boardStatus={boardStatus}
