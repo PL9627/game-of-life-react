@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { ButtonToolBar, MenuItem, DropdownButton } from "react-bootstrap";
 import "./game.css";
 
@@ -22,6 +21,37 @@ class Box extends React.Component {
     );
   }
 }
+
+const Grid = (props) => {
+  const width = props.cols * 14;
+
+  let boxClass = "";
+
+  const rowsArr = props.gridFull.map((rowArr, rowIdx) => {
+    rowArr.map((item, colIdx) => {
+      const boxId = `${rowIdx}_${colIdx}`;
+
+      boxClass = props.gridFull[rowIdx][colIdx] ? "box on" : "box off";
+
+      return (
+        <Box
+          boxClass={boxClass}
+          key={boxId}
+          boxId={boxId}
+          row={rowIdx}
+          col={colIdx}
+          selectBox={this.selectBox}
+        />
+      );
+    });
+  });
+
+  return (
+    <div className="gird" style={{ width }}>
+      {rowsArr}
+    </div>
+  );
+};
 
 /* const gridRows = 80;
 const gridCols = 200;
