@@ -111,6 +111,11 @@ class Game extends React.Component {
         }),
     };
   }
+
+  componentDidMount() {
+    this.seed();
+    this.playButton();
+  }
 }
 
 /* const gridRows = 80;
