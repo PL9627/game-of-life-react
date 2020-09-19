@@ -1,5 +1,7 @@
 import React from "react";
-import { ButtonToolBar, MenuItem, DropdownButton } from "react-bootstrap";
+import Dropdown from "react-bootstrap/Dropdown";
+import ButtonToolBar from "react-bootstrap/ButtonToolbar";
+import DropdownButton from "react-bootstrap/DropdownButton";
 import "./game.css";
 
 function arrClone(arr) {
@@ -47,7 +49,7 @@ const Grid = (props) => {
   });
 
   return (
-    <div className="gird" style={{ width }}>
+    <div className="grid" style={{ width }}>
       {rowsArr}
     </div>
   );
@@ -85,9 +87,9 @@ class Buttons extends React.Component {
             id="size-menu"
             onSelect={this.props.handleSelect}
           >
-            <MenuItem eventKey="1">50x50</MenuItem>
-            <MenuItem eventKey="2">175x250</MenuItem>
-            <MenuItem eventKey="3">300x400</MenuItem>
+            <Dropdown.Item eventKey="1">50x50</Dropdown.Item>
+            <Dropdown.Item eventKey="2">175x250</Dropdown.Item>
+            <Dropdown.Item eventKey="3">300x400</Dropdown.Item>
           </DropdownButton>
         </ButtonToolBar>
       </div>
@@ -173,7 +175,7 @@ class Game extends React.Component {
         this.cols = 175;
         this.rows = 250;
         break;
-      case "3":
+      default:
         this.cols = 300;
         this.rows = 400;
     }
@@ -203,7 +205,33 @@ class Game extends React.Component {
       generation: prevState.generation + 1,
     }));
   };
+
+  render() {
+    return (
+      <div>
+        <h1>Game of Life</h1>
+        <Buttons
+          playButton={this.playButton}
+          pauseButton={this.pauseButton}
+          slow={this.slow}
+          fast={this.fast}
+          clear={this.clear}
+          seed={this.seed}
+          gridSize={this.gridSize}
+        />
+        <Grid
+          gridFull={this.state.gridFull}
+          rows={this.rows}
+          cols={this.cols}
+          selectBox={this.selectBox}
+        />
+        <h2>Generations: {this.state.generation}</h2>
+      </div>
+    );
+  }
 }
+
+export default Game;
 
 /* const gridRows = 80;
 const gridCols = 200;
