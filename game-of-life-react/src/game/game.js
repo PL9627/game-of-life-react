@@ -116,6 +116,15 @@ class Game extends React.Component {
     this.seed();
     this.playButton();
   }
+
+  selectBox = (row, col) => {
+    const gridFull = this.state.gridFull.map((rowArr, rowIdx) => {
+      rowArr.map((item, colIdx) =>
+        rowIdx === row && colIdx === col ? !item : item
+      );
+    });
+    this.setState(() => ({ gridFull }));
+  };
 }
 
 /* const gridRows = 80;
