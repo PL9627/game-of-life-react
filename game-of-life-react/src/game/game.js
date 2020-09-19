@@ -95,6 +95,10 @@ class Buttons extends React.Component {
   }
 }
 
+class Main extends React.Component {
+  
+}
+
 /* const gridRows = 80;
 const gridCols = 200;
 
