@@ -68,6 +68,9 @@ class Buttons extends React.Component {
           <button className="btn btn-default" onClick={this.props.pauseButton}>
             Pause
           </button>
+          <button className="btn btn-default" onClick={this.props.clear}>
+            Clear
+          </button>
         </ButtonToolBar>
       </div>
     );
