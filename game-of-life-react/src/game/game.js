@@ -125,6 +125,13 @@ class Game extends React.Component {
     });
     this.setState(() => ({ gridFull }));
   };
+
+  seed = () => {
+    const gridFull = this.state.gridFull.map((rowArr) => {
+      rowArr.map(() => Math.floor(Math.random() * 4) === 1);
+    });
+    this.setState(() => ({ gridFull }));
+  };
 }
 
 /* const gridRows = 80;
