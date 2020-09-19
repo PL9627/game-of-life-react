@@ -74,6 +74,21 @@ class Buttons extends React.Component {
           <button className="btn btn-default" onClick={this.props.slow}>
             Slow
           </button>
+          <button className="btn btn-default" onClick={this.props.fast}>
+            Fast
+          </button>
+          <button className="btn btn-default" onClick={this.props.seed}>
+            Seed
+          </button>
+          <DropdownButton
+            title="Grid Size"
+            id="size-menu"
+            onSelect={this.props.handleSelect}
+          >
+            <MenuItem eventKey="1">50x50</MenuItem>
+            <MenuItem eventKey="2">175x250</MenuItem>
+            <MenuItem eventKey="3">300x400</MenuItem>
+          </DropdownButton>
         </ButtonToolBar>
       </div>
     );
