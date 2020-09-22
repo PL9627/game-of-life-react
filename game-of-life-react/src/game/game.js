@@ -227,8 +227,8 @@ class Game extends React.Component {
   }
 } */
 
-const gridRows = 80;
-const gridCols = 200;
+const gridRows = 50;
+const gridCols = 80;
 
 const newBoardStatus = (cellStatus = () => Math.random() < 0.3) => {
   const grid = [];
@@ -254,7 +254,7 @@ const BoardGrid = ({ boardStatus, onToggleCellStatus }) => {
     for (let c = 0; c < gridCols; c++) {
       td.push(
         <td
-          key={`${r}, ${c}`}
+          key={`${r},${c}`}
           className={boardStatus[r][c] ? "alive" : "dead"}
           onClick={() => handleClick(r, c)}
         />
