@@ -1,10 +1,10 @@
-import React from "react";
-import Dropdown from "react-bootstrap/Dropdown";
+import React, { Component } from "react";
+/* import Dropdown from "react-bootstrap/Dropdown";
 import ButtonToolBar from "react-bootstrap/ButtonToolbar";
-import DropdownButton from "react-bootstrap/DropdownButton";
+import DropdownButton from "react-bootstrap/DropdownButton"; */
 import "./game.css";
 
-function arrClone(arr) {
+/* function arrayClone(arr) {
   return JSON.parse(JSON.stringify(arr));
 }
 
@@ -26,15 +26,12 @@ class Box extends React.Component {
 
 const Grid = (props) => {
   const width = props.cols * 14;
-
   let boxClass = "";
-
-  const rowsArr = props.gridFull.map((rowArr, rowIdx) => {
+  const rowsArr = props.gridFull.map((rowArr, rowIdx) =>
     rowArr.map((item, colIdx) => {
       const boxId = `${rowIdx}_${colIdx}`;
 
       boxClass = props.gridFull[rowIdx][colIdx] ? "box on" : "box off";
-
       return (
         <Box
           boxClass={boxClass}
@@ -42,11 +39,11 @@ const Grid = (props) => {
           boxId={boxId}
           row={rowIdx}
           col={colIdx}
-          selectBox={this.selectBox}
+          selectBox={props.selectBox}
         />
       );
-    });
-  });
+    })
+  );
 
   return (
     <div className="grid" style={{ width }}>
@@ -85,11 +82,11 @@ class Buttons extends React.Component {
           <DropdownButton
             title="Grid Size"
             id="size-menu"
-            onSelect={this.props.handleSelect}
+            onSelect={this.handleSelect}
           >
-            <Dropdown.Item eventKey="1">50x50</Dropdown.Item>
-            <Dropdown.Item eventKey="2">175x250</Dropdown.Item>
-            <Dropdown.Item eventKey="3">300x400</Dropdown.Item>
+            <Dropdown.Item eventKey="1">20x10</Dropdown.Item>
+            <Dropdown.Item eventKey="2">50x30</Dropdown.Item>
+            <Dropdown.Item eventKey="3">70x50</Dropdown.Item>
           </DropdownButton>
         </ButtonToolBar>
       </div>
@@ -101,16 +98,14 @@ class Game extends React.Component {
   constructor() {
     super();
     this.speed = 100;
-    this.rows = 80;
-    this.cols = 200;
+    this.rows = 30;
+    this.cols = 50;
 
     this.state = {
       generation: 0,
       gridFull: Array(this.rows)
         .fill()
-        .map(() => {
-          Array(this.cols).fill(false);
-        }),
+        .map(() => Array(this.cols).fill(false)),
     };
   }
 
@@ -120,24 +115,24 @@ class Game extends React.Component {
   }
 
   selectBox = (row, col) => {
-    const gridFull = this.state.gridFull.map((rowArr, rowIdx) => {
+    const gridFull = this.state.gridFull.map((rowArr, rowIdx) =>
       rowArr.map((item, colIdx) =>
         rowIdx === row && colIdx === col ? !item : item
-      );
-    });
+      )
+    );
     this.setState(() => ({ gridFull }));
   };
 
   seed = () => {
-    const gridFull = this.state.gridFull.map((rowArr) => {
-      rowArr.map(() => Math.floor(Math.random() * 4) === 1);
-    });
+    const gridFull = this.state.gridFull.map((rowArr) =>
+      rowArr.map(() => Math.floor(Math.random() * 4) === 1)
+    );
     this.setState(() => ({ gridFull }));
   };
 
   playButton = () => {
     clearInterval(this.intervalId);
-    this.intervalId = setInterval(this.playButton, this.speed);
+    this.intervalId = setInterval(this.play, this.speed);
   };
 
   pauseButton = () => {
@@ -168,34 +163,35 @@ class Game extends React.Component {
   gridSize = (size) => {
     switch (size) {
       case "1":
-        this.cols = 50;
-        this.rows = 50;
+        this.cols = 20;
+        this.rows = 10;
         break;
       case "2":
-        this.cols = 175;
-        this.rows = 250;
+        this.cols = 50;
+        this.rows = 30;
         break;
       default:
-        this.cols = 300;
-        this.rows = 400;
+        this.cols = 70;
+        this.rows = 50;
     }
     this.clear();
   };
 
   play = () => {
     let g = this.state.gridFull;
-    let g2 = arrClone(this.state.gridFull);
+    let g2 = arrayClone(this.state.gridFull);
 
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
         let count = 0;
-        if (i > 0) if (g[i - 1][j - 1]) count++;
+        if (i > 0) if (g[i - 1][j]) count++;
         if (i > 0 && j > 0) if (g[i - 1][j - 1]) count++;
-        if (i > 0 && j < this.cols - 1) if (g[i - 1][j - 1]) count++;
+        if (i > 0 && j < this.cols - 1) if (g[i - 1][j + 1]) count++;
         if (j < this.cols - 1) if (g[i][j + 1]) count++;
         if (j > 0) if (g[i][j - 1]) count++;
         if (i < this.rows - 1) if (g[i + 1][j]) count++;
-        if (i < this.rouws - 1 && this.cols - 1) if (g[i + 1][j + 1]) count++;
+        if (i < this.rows - 1 && j > 0) if (g[i + 1][j - 1]) count++;
+        if (i < this.rows - 1 && this.cols - 1) if (g[i + 1][j + 1]) count++;
         if (g[i][j] && (count < 2 || count > 3)) g2[i][j] = false;
         if (!g[i][j] && count === 3) g2[i][j] = true;
       }
@@ -209,7 +205,7 @@ class Game extends React.Component {
   render() {
     return (
       <div>
-        <h1>Game of Life</h1>
+        <h1>The Game of Life</h1>
         <Buttons
           playButton={this.playButton}
           pauseButton={this.pauseButton}
@@ -229,11 +225,9 @@ class Game extends React.Component {
       </div>
     );
   }
-}
+} */
 
-export default Game;
-
-/* const gridRows = 80;
+const gridRows = 80;
 const gridCols = 200;
 
 const newBoardStatus = (cellStatus = () => Math.random() < 0.3) => {
@@ -463,4 +457,6 @@ class Game extends Component {
       </div>
     );
   }
-} */
+}
+
+export default Game;
