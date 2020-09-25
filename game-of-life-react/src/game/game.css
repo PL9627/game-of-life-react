@@ -1,0 +1,59 @@
+table {
+  margin: 0 auto 20px 20px;
+  border-collapse: collapse;
+  background-color: black;
+}
+
+td {
+  width: 10px;
+  height: 10px;
+  border: 1px solid gray;
+}
+
+.alive {
+  background-color: white;
+}
+
+.alive:hover {
+  background-color: yellow;
+}
+
+.dead:hover {
+  background-color: green;
+}
+
+button {
+  border: .5px solid black;
+  outline: none;
+  border-radius: 20px;
+  margin: 20px 10px;
+  padding: 10px 15px;
+  font-size: 18px;
+  color: black;
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+button:hover {
+  color: blue;
+}
+
+.flewRow {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.upperControls,
+.lowerControls {
+  margin: auto;
+}
+
+.upperControls {
+  width: 350px;
+}
+
+.lowerControls {
+  width: 500px;
+}
